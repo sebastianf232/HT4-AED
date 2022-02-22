@@ -18,6 +18,8 @@ public class StackPL<E> extends Pilas<E>{
 
     @Override
     public E remove() {
+        //Pre: hay un elemento
+        //Post: le quita un elemento al ArrayList
         if (v.size()>0){
             return v.removeLast().getElement();
         }
@@ -26,6 +28,8 @@ public class StackPL<E> extends Pilas<E>{
 
     @Override
     public E peek() {
+        //Pre: hay un elemento
+        //Post: se obtiene el numero de elementos
         if (v.size()>0){
             return v.getLast().getElement();
         }

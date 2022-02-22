@@ -19,6 +19,8 @@ public class StackPV<E> extends Pilas<E>{
 
     @Override
     public E remove() {
+        //Pre: hay un elemento
+        //Post: le quita un elemento al ArrayList
         if (v.size()>0){
             return v.remove(v.size()-1);
         }
@@ -27,6 +29,8 @@ public class StackPV<E> extends Pilas<E>{
 
     @Override
     public E peek() {
+        //Pre: hay un elemento
+        //Post: se obtiene el numero de elementos
         if (v.size()>0){
             return v.get(v.size()-1);
         }

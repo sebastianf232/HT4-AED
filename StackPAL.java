@@ -16,10 +16,12 @@ public class StackPAL<E> extends Pilas<E> {
     @Override
     public void add(E item) {
         v.add(item);
-    }
+    } ///Permite aniadir elementos al Stack
 
     @Override
     public E remove() {
+        //Pre: hay un elemento
+        //Post: le quita un elemento al ArrayList
         if (v.size()>0){
             return v.remove(v.size()-1);
         }
@@ -28,6 +30,9 @@ public class StackPAL<E> extends Pilas<E> {
 
     @Override
     public E peek() {
+        //Pre: hay un elemento
+        //Post: se obtiene el numero de elementos
+
         if (v.size()>0){
             return v.get(v.size()-1);
         }
@@ -36,6 +41,8 @@ public class StackPAL<E> extends Pilas<E> {
 
     @Override
     public boolean empty() {
+        //Post: indica si hay un elemento en ArrayList
+
         if(v.size()>0){
             return false;
         }

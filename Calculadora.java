@@ -8,27 +8,29 @@
  * Clase Calculadora
  */
 public class Calculadora {
-    private Pilas<Double> stack = new Factory().getStack();
+    private Pilas<Double> stack = new Factory().getStack(); ///Se instancia la Factory
     static boolean instance_flag = false;
 
-    public Calculadora(){
+    public Calculadora(){ ///Constructor de la clase
+
         if (instance_flag){
-            throw new SingletonException("Solo una calculadora permitida");
+            throw new SingletonException("Solo una calculadora permitida"); ///Indica que la calculadora ya estaba encendida.
         } else {
             instance_flag = true;
-            System.out.println("Calculadora encendida");
+            System.out.println("Calculadora encendida"); ///Indica que la calculadora se encendio
         }
     }
     public double calculate(String operation) throws SingletonException {
         /**
          * Son los atributos que entran al Stack.
          * Dentro del stack se ve que tipo de simbolo es y se hace la operación a base de el.
+         * todos los doubles son los digitos/ operadores
          */
         double oper1;
         double oper2;
         double res;
         double resFinal;
-        String[] op = operation.split(" ");
+        String[] op = operation.split(" "); ///Lista de la operacion del .txt
         for (String a: op){
             /**
              * Permite ver si el simbolo de entrada es una suma.
@@ -60,7 +62,6 @@ public class Calculadora {
                 stack.remove();
                 res = oper2 * oper1;
                 stack.add(res);
-                
             /**
              * Permite ver si el simbolo de entrada es una division.
              */
@@ -92,7 +93,7 @@ public class Calculadora {
     }
     public void finalize(){
         instance_flag = false;
-    }
+    } ///Se apaga la calculadora al finalizar.
     
 }
 

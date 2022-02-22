@@ -8,6 +8,7 @@
  * Clase Stack Listas Single linked
  */
 public class ListasSingle<E> extends Listas<E> {
+
     private Node<E> head, tail;
     private int size;
 
@@ -17,6 +18,7 @@ public class ListasSingle<E> extends Listas<E> {
         size = 0;
     }
     public void addFirst(E item){
+        //Post: Agrega el valor al inicio de la lista
         Node<E> Node = new Node(item);
         if (tail == null){
             tail = Node;
@@ -28,6 +30,7 @@ public class ListasSingle<E> extends Listas<E> {
     }
     @Override
     public void addLast(E item) {
+        ///Post: agrega el valor al final de la lista
         Node<E> Node = new Node(item);
         Node.setNext(null);
         if (tail != null){
@@ -40,6 +43,8 @@ public class ListasSingle<E> extends Listas<E> {
         }
     }
     public Node<E> removeFirst() {
+        ///Pre: la lista no esta vacia
+        //Post: retorna el primer valor de la lista
         if (head == null){
             return null;
         }
@@ -51,6 +56,8 @@ public class ListasSingle<E> extends Listas<E> {
         return temp;
     } 
     public Node<E> removeLast(){
+        // pre: la lista no esta vacia
+        // post: quita el ultimo valor de la lista
         Node<E> nodoAntes, nodoRemover;
 
         if (head == null){
@@ -79,11 +86,11 @@ public class ListasSingle<E> extends Listas<E> {
     }
     public Node<E> getFirst(){
         return head;
-    }
+    } //Indica el valor del head
     public Node<E> getLast(){
         return tail;
-    }
+    } //Indica el valor del tail
     public int size(){
         return size;
-    }
+    } // Indica el Size del nodo.
 }
