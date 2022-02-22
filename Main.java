@@ -1,16 +1,17 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.concurrent.ArrayBlockingQueue;
+
+import javax.sound.midi.SysexMessage;
 
 public class Main {
 
     static String path = "datos.txt";
     static String line = null;
-    static Calculadora calc = new Calculadora();
     static ArrayList<String> a = new ArrayList<String>();
-    
-    
+
     public static int prec(char ch){
         switch(ch){
             case '+':
@@ -96,11 +97,40 @@ public class Main {
         }
     }
     public static void main(String args[]) {
-        leerArchivo();
-        System.out.println("Respuestas:");
-        for (int i = 0; i < a.size(); i++){
-            System.out.println(calc.calculate(convertir(a.get(i))));
+        boolean on = true;
+        int i = 0;
+        Scanner scan = new Scanner(System.in);
+        while (on){
+            while (on){
+                System.out.println("Ingrese 1 para usar la calculadora, 2 para cerrar");
+                try{
+                    i = scan.nextInt();
+                } catch (Exception e){
+                    System.out.println("Ingrese solo 1 o 2");
+                    continue;
+                }
+                if (i <= 0 || i >= 3){
+                    System.out.println("Ingrese solo 1 o 2");
+                    continue;
+                }
+                break;
+            }
+            if (i == 1){
+                Calculadora calc = new Calculadora();
+                leerArchivo();
+                System.out.println("Respuestas:");
+                for (int b = 0; b < a.size(); b++){
+                    System.out.println(calc.calculate(convertir(a.get(b))));
+                }
+                a.clear();
+                calc.finalize();
+                continue;
+            } else {
+                break;
+            }
+            
         }
+        
         
     } 
 }

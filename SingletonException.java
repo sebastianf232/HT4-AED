@@ -7,6 +7,11 @@
  * @author Dimitrio Badani 20092
  * Clase Singleton
  */
-public class Singleton {
-    
+public class SingletonException extends RuntimeException {
+    public SingletonException(){
+        super();
+    }
+    public SingletonException(String s){
+        super(s);
+    }
 }

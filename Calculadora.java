@@ -9,8 +9,17 @@
  */
 public class Calculadora {
     private Pilas<Double> stack = new Factory().getStack();
+    static boolean instance_flag = false;
 
-    public double calculate(String operation) {
+    public Calculadora(){
+        if (instance_flag){
+            throw new SingletonException("Solo una calculadora permitida");
+        } else {
+            instance_flag = true;
+            System.out.println("Calculadora encendida");
+        }
+    }
+    public double calculate(String operation) throws SingletonException {
         /**
          * Son los atributos que entran al Stack.
          * Dentro del stack se ve que tipo de simbolo es y se hace la operación a base de el.
@@ -80,6 +89,9 @@ public class Calculadora {
         resFinal = stack.peek();
         return resFinal;
         
+    }
+    public void finalize(){
+        instance_flag = false;
     }
     
 }
