@@ -1,3 +1,5 @@
+import java.util.Vector;
+
 /**
  * Universidad del Valle de Guatemala
  * Algoritmos y Estructuras de Datos
@@ -8,5 +10,10 @@
  * Abstract Class Pilas
  */
 
-public abstract class Pilas {
+public abstract class Pilas<E> implements InterfazPilas<E>{
+  
+    @Override
+    public boolean empty(){
+        return size() == 0;
+    } 
 }

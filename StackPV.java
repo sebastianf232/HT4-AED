@@ -1,3 +1,5 @@
+import java.util.Vector;
+
 /**
  * Universidad del Valle de Guatemala
  * Algoritmos y Estructuras de Datos
@@ -7,5 +9,31 @@
  * @author Dimitrio Badani 20092
  * Clase Stack Pilas Vector
  */
-public class StackPV {
+public class StackPV<E> extends Pilas<E>{
+    Vector<E> v = new Vector<E>();
+
+    @Override
+    public void add(E item) {
+        v.addElement(item);
+    }
+
+    @Override
+    public E remove() {
+        if (v.size()>0){
+            return v.remove(v.size()-1);
+        }
+        return null;
+    }
+
+    @Override
+    public E peek() {
+        if (v.size()>0){
+            return v.get(v.size()-1);
+        }
+        return null;
+    }
+    @Override
+    public int size() {
+        return v.size();
+    }
 }

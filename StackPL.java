@@ -7,5 +7,32 @@
  * @author Dimitrio Badani 20092
  * Clase Stack Pilas List
  */
-public class StackPL {
+public class StackPL<E> extends Pilas<E>{
+    Listas<E> v = new ListFactory().getList();
+
+
+    @Override
+    public void add(E item) {
+        v.addLast(item);
+    }
+
+    @Override
+    public E remove() {
+        if (v.size()>0){
+            return v.removeLast().getElement();
+        }
+        return null;
+    }
+
+    @Override
+    public E peek() {
+        if (v.size()>0){
+            return v.getLast().getElement();
+        }
+        return null;
+    }
+    @Override
+    public int size() {
+        return v.size();
+    }
 }

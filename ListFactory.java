@@ -1,22 +1,13 @@
 import java.util.Scanner;
 
-/**
- * Universidad del Valle de Guatemala
- * Algoritmos y Estructuras de Datos
- * Hoja de Trabajo 4
- * @author Juan Miguel Gonzalez-Campo 21077
- * @author Sebastian Franco 21484
- * @author Dimitrio Badani 20092
- * Clase Factory
- */
-public class Factory<E> {
-    private Pilas<E> stack;
-    public Pilas<E> getStack(){
+public class ListFactory<E> {
+    private Listas<E> list;
+    public Listas<E> getList(){
         Scanner scan = new Scanner(System.in);
         boolean on = true;
         int i = 0;
         while (on){
-            System.out.println("Ingrese tipo de stacka a utilziar: \n1.Vector \n2. ArrayList \n3. Lista (debera escoger tipo de lista)");
+            System.out.println("Ingrese tipo de lista a utilziar: \n1.Single linked \n2. Double linked \n3. Circularly linked");
             try{
                 i = scan.nextInt();
             } catch (Exception e){
@@ -32,12 +23,12 @@ public class Factory<E> {
         
         
         if(i == 1){
-            stack = new StackPV<>();
+            list = new ListasSingle<>();
         } if (i == 2){
-            stack = new StackPAL<>();
+            list = new ListasDouble<>();
         } if (i == 3){
-            stack = new StackPL<>();
+            list = new ListasCircular<>();
         }
-        return stack;
+        return list;
     }
 }

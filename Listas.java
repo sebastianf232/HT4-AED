@@ -1,3 +1,4 @@
+import org.w3c.dom.Node;
 /**
  * Universidad del Valle de Guatemala
  * Algoritmos y Estructuras de Datos
@@ -7,5 +8,9 @@
  * @author Dimitrio Badani 20092
  * Abstract Class Listas
  */
-public abstract class Listas {
+public abstract class Listas<E> implements InterfazListas<E>{
+    @Override
+    public boolean isEmpty(){
+        return size() == 0;
+    }
 }

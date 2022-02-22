@@ -8,6 +8,81 @@
  * Clase Calculadora
  */
 public class Calculadora {
+    private Pilas<Double> stack = new Factory().getStack();
 
+    public double calculate(String operation) {
+        /**
+         * Son los atributos que entran al Stack.
+         * Dentro del stack se ve que tipo de simbolo es y se hace la operación a base de el.
+         */
+        double oper1;
+        double oper2;
+        double res;
+        double resFinal;
+        String[] op = operation.split(" ");
+        for (String a: op){
+            /**
+             * Permite ver si el simbolo de entrada es una suma.
+             */
+            if (a.equals("+")){
+                oper1 = stack.peek();
+                stack.remove();
+                oper2 = stack.peek();
+                stack.remove();
+                res = oper2 + oper1;
+                stack.add(res);
+            /**
+             * Permite ver si el simbolo de entrada es una resta.
+             */
+            } if (a.equals("-")) {
+                oper1 = stack.peek();
+                stack.remove();
+                oper2 = stack.peek();
+                stack.remove();
+                res = oper2 - oper1;
+                stack.add(res);
+            /**
+             * Permite ver si el simbolo de entrada es una multiplicacion.
+             */
+            } if (a.equals("*")) {
+                oper1 = stack.peek();
+                stack.remove();
+                oper2 = stack.peek();
+                stack.remove();
+                res = oper2 * oper1;
+                stack.add(res);
+                
+            /**
+             * Permite ver si el simbolo de entrada es una division.
+             */
+            } if (a.equals("/")) {
+                oper1 = stack.peek();
+                stack.remove();
+                oper2 = stack.peek();
+                stack.remove();
+                res = oper2 / oper1;
+                stack.add(res);
+                
+               
+            } else {
+                 /**
+                 * Si no se encuentra ninguno de los simbolos el programa indica la excepcion.
+                 */
+                try{
+                    stack.add(Double.valueOf(a));
+                } catch (Exception e){
+                    
+                }
+                
+            }            
+        }
+        /** 
+         * Se resuelve la operacion.
+         */
+        resFinal = stack.peek();
+        return resFinal;
+        
+    }
+    
 }
 
