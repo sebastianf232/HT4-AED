@@ -49,18 +49,29 @@ public class ListasCircular<E> extends Listas<E> {
     public Node<E> removeLast(){
         Node<E> nodoAntes, nodoRemover;
 
-        if (tail == null){
+        if (head == null){
+            System.out.println("Lista vacia");
             return null;
+        } 
+        if(size == 1){
+            nodoAntes = tail;
+            head = tail = null;
+            return nodoAntes;
         }
-        nodoAntes = getFirst();
-        for (int a = 0; a < size-2; a++){
-            nodoAntes = nodoAntes.getNext();
+        else{
+        nodoRemover = head;
+        nodoAntes = null;
+        while(nodoRemover.getNext()!=head){
+            nodoAntes = nodoRemover;
+            nodoRemover = nodoRemover.getNext();
         }
-        nodoRemover = tail;
-        nodoAntes.setNext(head);
-        tail = nodoAntes;
+        if (nodoAntes != null){
+            nodoAntes.setNext(head);
+            tail = nodoAntes;
+        }
         size--;
-        return nodoAntes;
+        return nodoRemover;
+        }
     }
     public Node<E> getFirst(){
         return head;

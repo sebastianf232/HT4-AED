@@ -8,4 +8,5 @@
  * Clase Singleton
  */
 public class Singleton {
+    
 }

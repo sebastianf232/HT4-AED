@@ -61,9 +61,7 @@ public class Calculadora {
                 oper2 = stack.peek();
                 stack.remove();
                 res = oper2 / oper1;
-                stack.add(res);
-                
-               
+                stack.add(res); 
             } else {
                  /**
                  * Si no se encuentra ninguno de los simbolos el programa indica la excepcion.

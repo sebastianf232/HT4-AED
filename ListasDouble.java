@@ -28,7 +28,9 @@ public class ListasDouble<E> extends Listas<E> {
             head = tail = node;
         }
         node.setPrev(tail);
+        tail.setNext(node);
         tail = node;
+        
 
         size++;
     }
@@ -38,7 +40,7 @@ public class ListasDouble<E> extends Listas<E> {
             System.out.println("lista vacia");
             return null;
         }
-        Node<E> node, node2;
+        Node<E> node;
         node = head;
         head = head.getNext();
         node.setNext(null);
@@ -48,18 +50,29 @@ public class ListasDouble<E> extends Listas<E> {
     public Node<E> removeLast(){
         Node<E> nodoAntes, nodoRemover;
 
-        if (tail == null){
+        if (head == null){
+            System.out.println("Lista vacia");
             return null;
+        } 
+        if(size == 1){
+            nodoAntes = tail;
+            head = tail = null;
+            return nodoAntes;
         }
-        nodoAntes = getFirst();
-        for (int a = 0; a < size-2; a++){
-            nodoAntes = nodoAntes.getNext();
+        else{
+        nodoRemover = head;
+        nodoAntes = null;
+        while(nodoRemover.getNext()!=null){
+            nodoAntes = nodoRemover;
+            nodoRemover = nodoRemover.getNext();
         }
-        nodoRemover = tail;
-        nodoAntes.setNext(null);
-        tail = nodoAntes;
+        if (nodoAntes != null){
+            nodoAntes.setNext(null);
+            tail = nodoAntes;
+        }
         size--;
-        return nodoAntes;
+        return nodoRemover;
+        }
     }
     public Node<E> getFirst(){
         return head;

@@ -17,7 +17,7 @@ public class ListasSingle<E> extends Listas<E> {
         size = 0;
     }
     public void addFirst(E item){
-        Node<E> Node = new Node(item)
+        Node<E> Node = new Node(item);
         if (tail == null){
             tail = Node;
         }
@@ -30,9 +30,14 @@ public class ListasSingle<E> extends Listas<E> {
     public void addLast(E item) {
         Node<E> Node = new Node(item);
         Node.setNext(null);
-        tail.setNext(Node);
-        tail = Node;
-        size++;
+        if (tail != null){
+            tail.setNext(Node);
+            tail = Node;
+            size++;
+        } else {
+            tail = head = Node;
+            size++;
+        }
     }
     public Node<E> removeFirst() {
         if (head == null){
@@ -48,19 +53,29 @@ public class ListasSingle<E> extends Listas<E> {
     public Node<E> removeLast(){
         Node<E> nodoAntes, nodoRemover;
 
-        if (size == 0){
+        if (head == null){
+            System.out.println("Lista vacia");
             return null;
+        } 
+        if(size == 1){
+            nodoAntes = tail;
+            head = tail = null;
+            return nodoAntes;
         }
-        nodoAntes = getFirst();
-        for (int a = 0; a < size-2; a++){
-            nodoAntes = nodoAntes.getNext();
+        else{
+        nodoRemover = head;
+        nodoAntes = null;
+        while(nodoRemover.getNext()!=null){
+            nodoAntes = nodoRemover;
+            nodoRemover = nodoRemover.getNext();
         }
-        nodoRemover = tail;
-
-        nodoAntes.setNext(null);
-        tail = nodoAntes;
+        if (nodoAntes != null){
+            nodoAntes.setNext(null);
+            tail = nodoAntes;
+        }
         size--;
-        return nodoAntes;
+        return nodoRemover;
+        }
     }
     public Node<E> getFirst(){
         return head;
