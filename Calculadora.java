@@ -8,7 +8,7 @@
  * Clase Calculadora
  */
 public class Calculadora {
-    private Pilas<Double> stack = new Factory().getStack(); ///Se instancia la Factory
+    private Pilas<Double> stack;
     static boolean instance_flag = false;
 
     public Calculadora(){ ///Constructor de la clase
@@ -16,8 +16,24 @@ public class Calculadora {
         if (instance_flag){
             throw new SingletonException("Solo una calculadora permitida"); ///Indica que la calculadora ya estaba encendida.
         } else {
+            stack = new Factory().getStack(); ///Se instancia la Factory
             instance_flag = true;
             System.out.println("Calculadora encendida"); ///Indica que la calculadora se encendio
+        }
+    }
+
+    // Para instanciar la calculadora en el test (sin inputs)
+    public Calculadora(int i){
+        if (i == 1){
+            stack = new StackPV<Double>();
+        } if (i == 2){
+            stack = new StackPAL<Double>();
+        } if (i == 3){
+            stack = new StackPL<Double>(1);
+        } if (i==4){
+            stack = new StackPL<Double>(2);
+        }if (i==5){
+            stack = new StackPL<Double>(3);
         }
     }
     public double calculate(String operation) throws SingletonException {

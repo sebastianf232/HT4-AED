@@ -8,7 +8,23 @@
  * Clase Stack Pilas List
  */
 public class StackPL<E> extends Pilas<E>{
-    Listas<E> v = new ListFactory().getList();
+    Listas<E> v;
+    
+    public StackPL(){
+        v = new ListFactory().getList();
+    }
+
+    // para istanciar un stack de lista en el test (sin inputs)
+    public StackPL(int i){
+        if (i == 1){
+            v = new ListasSingle<E>();
+        } if (i == 2){
+            v = new ListasDouble<E>();
+        } if (i == 3){
+            v = new ListasCircular<E>();
+        }
+    }
+    
 
 
     @Override

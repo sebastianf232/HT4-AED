@@ -56,21 +56,22 @@ public class ListasCircular<E> extends Listas<E> {
         if(size == 1){
             nodoAntes = tail;
             head = tail = null;
+            size--;
             return nodoAntes;
         }
         else{
-        nodoRemover = head;
-        nodoAntes = null;
-        while(nodoRemover.getNext()!=head){
-            nodoAntes = nodoRemover;
-            nodoRemover = nodoRemover.getNext();
-        }
-        if (nodoAntes != null){
-            nodoAntes.setNext(head);
-            tail = nodoAntes;
-        }
-        size--;
-        return nodoRemover;
+            nodoRemover = head;
+            nodoAntes = null;
+            while(nodoRemover.getNext()!=head){
+                nodoAntes = nodoRemover;
+                nodoRemover = nodoRemover.getNext();
+            }
+            if (nodoAntes != null){
+                nodoAntes.setNext(head);
+                tail = nodoAntes;
+            }
+            size--;
+            return nodoRemover;
         }
     }
     public Node<E> getFirst(){

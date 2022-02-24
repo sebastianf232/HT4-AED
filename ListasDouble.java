@@ -68,21 +68,22 @@ public class ListasDouble<E> extends Listas<E> {
         if(size == 1){
             nodoAntes = tail;
             head = tail = null;
+            size--;
             return nodoAntes;
         }
         else{
-        nodoRemover = head;
-        nodoAntes = null;
-        while(nodoRemover.getNext()!=null){
-            nodoAntes = nodoRemover;
-            nodoRemover = nodoRemover.getNext();
-        }
-        if (nodoAntes != null){
-            nodoAntes.setNext(null);
-            tail = nodoAntes;
-        }
-        size--;
-        return nodoRemover;
+            nodoRemover = head;
+            nodoAntes = null;
+            while(nodoRemover.getNext()!=null){
+                nodoAntes = nodoRemover;
+                nodoRemover = nodoRemover.getNext();
+            }
+            if (nodoAntes != null){
+                nodoAntes.setNext(null);
+                tail = nodoAntes;
+            }
+            size--;
+            return nodoRemover;
         }
     }
     public Node<E> getFirst(){
